@@ -40,7 +40,7 @@
                 <form action="{{route('search')}}" method="get" class="flex
                 form-input">
 
-                    <input type="text" class="text" name="id">
+                    <input type="text" class="text" name="id" value="1">
                     <input type="submit" value="search"
                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow "/>
 
@@ -49,12 +49,12 @@
 
             </div>
 
-{{--            Posts--}}
+            {{--            Posts--}}
 
         </div>
         <div class="col-span-3 bg-gray-200">
             <div><h1 class="font-bold text-center mt-4">Posts</h1></div>
-            @foreach ($posts as $post)
+
                 <br>
                 <div
                     class="max-w-sm rounded overflow-hidden shadow-lg bg-indigo-50 self-center mx-2">
@@ -77,7 +77,7 @@
                         </form>
                     </div>
                 </div>
-            @endforeach
+
         </div>
     </div>
 

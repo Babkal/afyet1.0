@@ -12,7 +12,7 @@ class UsersController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::all()->sortByDesc('id');
 
         return view('user.index', ['posts' => $posts,]);
 
@@ -25,13 +25,13 @@ class UsersController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
 
         $data = request()->validate([
             'title'=>'required|min:3',
 
-            'description'=>'required|min:3',
+            'content'=>'required|min:3',
         ]);
 
         Post::create($data);
@@ -41,9 +41,12 @@ class UsersController extends Controller
     }
 
 
-    public function show($id)
+    public function search(Request $request)
     {
+$post = Post::findOrFail($request->id);
 
+//dd($posts);
+return view('user.search', compact('post'));
     }
 
 
@@ -62,6 +65,6 @@ class UsersController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect('user');
+        return redirect()->route('user');
     }
 }

@@ -13,18 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.index');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/user', [\App\Http\Controllers\UsersController::class, 'index'])->name('user');
+Route::get('/', [\App\Http\Controllers\UsersController::class, 'index'])->name('user');
 Route::get('/user/create', [\App\Http\Controllers\UsersController::class, 'create'])->name('create');
 Route::post('/user/store', [\App\Http\Controllers\UsersController::class, 'store'])->name('store');
-Route::post('/user/{post}', [\App\Http\Controllers\UsersController::class, 'destroy']);
+Route::post('/user/{post}', [\App\Http\Controllers\UsersController::class, 'destroy'])->name('delete');
+Route::get('/user/search', [\App\Http\Controllers\UsersController::class, 'show'])->name('search_result');
+Route::get('/user/search', [\App\Http\Controllers\UsersController::class, 'search'])->name
+('search');
+
+
+
+
 
 
 
 Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
